@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Payroll</title>
+</head>
+<body>
+    <% if(allEmployees) { %>
+        <form action="/payroll" method="post">
+            <label for="employee">Select an employee</label>
+            <select name="employeeId" id="employee">
+                <% allEmployees.forEach((employee) => { %>
+                    <option value="<%= employee.id %>"><%= employee.full_name %></option>
+                <% }) %>                
+            </select>
+
+            <button type="submit">Calculate payroll</button>
+        </form>
+    <% } %>
+
+    <% if(employee) { %>
+        <p>Basic salary: $ <%= employee.basicSalary %></p>
+        <p>Antique: $ <%= employee.antiqueValue %></p>
+        <% if(employee.highSchoolValue !== 0) { %>
+            <p>High School Title Extra: $ <%= employee.highSchoolValue %></p> 
+        <% } %>
+        <p>: $</p>
+        <p>: $</p>
+    <% } %>
+</body>
+</html>
