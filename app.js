@@ -7,6 +7,8 @@ const passport = require("passport");
 // Import custom config
 const initializePassport = require("./config/passport-config");
 const authRouter = require("./src/routes/authRouter");
+const employeesRouter = require("./src/routes/employeesRouter");
+const payrollRouter = require("./src/routes/payrollRouter");
 
 // Import routers
 
@@ -26,11 +28,19 @@ app.use(express.urlencoded({ extended: true }));
 // Passport
 initializePassport(passport);
 
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
+
 // Routes
 app.get("/", (req, res) => {
   res.render("home");
 });
+
 app.use("/auth", authRouter);
+app.use("/employees", employeesRouter);
+app.use("/payroll", payrollRouter);
 
 app.listen(process.env.PORT, () =>
   console.log(`App running on port ${process.env.PORT}`)
