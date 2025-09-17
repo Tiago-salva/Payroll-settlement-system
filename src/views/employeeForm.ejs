@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Add employee</title>
+</head>
+<body>
+        <h1>Add an employee</h1>
+        <form action="/employees/create" method="post">
+            <div class="form-field">
+                <label for="cuit">Cuit</label>
+                <input type="number" name="cuit" id="cuit">
+            </div>
+            <div class="form-field">
+                <label for="full_name">Full name</label>
+                <input type="text" name="full_name" id="full_name">
+            </div>
+            <div class="form-field">
+                <label for="position">Position</label>
+                <input type="text" name="position" id="position">
+            </div>
+            <div class="form-field">
+                <label for="entry_date">Entry date</label>
+                <input type="date" name="entry_date" id="entry_date">
+            </div>
+            <div class="form-field">
+                <label for="social_work">Social work</label>
+                <input type="text" name="social_work" id="social_work">
+            </div>
+            <div class="form-field">
+                <label for="antique">Antique</label>
+                <input type="number" name="antique" id="antique">
+            </div>
+            <div class="form-field">
+                <label for="mode">Mode</label>
+                <input type="text" name="mode" id="mode">
+            </div>
+            <div class="form-field">
+                <label for="time_worked">Time worked</label>
+                <input type="number" name="time_worked" id="time_worked">
+            </div>
+            <div class="form-field">
+                <label for="basic_salary">Basic salary</label>
+                <input type="number" name="basic_salary" id="basic_salary">
+            </div>
+            <div class="form-field">
+                <label for="days_worked">Days worked</label>
+                <input type="number" name="days_worked" id="days_worked">
+            </div>
+            <div class="form-field">
+                <label for="high_school">Days worked</label>
+                <input type="number" name="high_school" id="high_school">
+            </div>
+
+            <button type="submit">Add employee</button>
+        </form>
+</body>
+</html>
