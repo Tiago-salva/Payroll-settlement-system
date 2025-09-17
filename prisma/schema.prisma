@@ -17,8 +17,8 @@ model User {
 // Faltan mas cosas
 model Employee {
   id          Int      @id @default(autoincrement())
-  cuit        Int
-  name        String
+  cuit        String
+  full_name   String
   position    String
   entryDate   DateTime
   socialWork  String
@@ -27,6 +27,7 @@ model Employee {
   timeWorked  Int
   basicSalary Int
   daysWorked  Int
+  highSchool  Boolean  @default(true)
   user        User     @relation(fields: [userId], references: [id])
   userId      Int
 }
