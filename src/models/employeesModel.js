@@ -32,4 +32,25 @@ async function getEmployee(id) {
   });
 }
 
-module.exports = { addEmployee, getAllEmployees, getEmployee };
+async function editEmployee(id, data) {
+  const updatedEmployee = await prisma.employee.update({
+    where: { id: id },
+    data: {
+      cuit: data.cuit,
+      full_name: data.full_name,
+      position: data.position,
+      // entryDate: new Date(data.entry_date),
+      socialWork: data.social_work,
+      antique: parseInt(data.antique),
+      mode: data.mode,
+      timeWorked: parseInt(data.time_worked),
+      basicSalary: parseInt(data.basic_salary),
+      daysWorked: parseInt(data.days_worked),
+      highSchool: data.highSchool,
+    },
+  });
+
+  return updatedEmployee;
+}
+
+module.exports = { addEmployee, getAllEmployees, getEmployee, editEmployee };
