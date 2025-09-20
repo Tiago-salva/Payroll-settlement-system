@@ -27,7 +27,7 @@ model Employee {
   timeWorked  Int
   basicSalary Int
   daysWorked  Int
-  highSchool  Boolean  @default(true)
+  highSchool  Boolean  @default(false)
   user        User     @relation(fields: [userId], references: [id])
   userId      Int
 }
