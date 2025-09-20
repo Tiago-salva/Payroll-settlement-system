@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees</title>
+</head>
+<body>
+    <%- include("header") %>
+    <ul>
+    <% allEmployees.forEach(employee => { %>
+        <li class="employee">
+            <h3><%= employee.full_name %></h3>
+            <a href="/employees/<%= employee.id %>/edit">Edit</a>
+            <a href="/employees/<%= employee.id %>/delete">Delete</a>
+        </li>
+    <% }) %>
+    </ul>
+</body>
+</html>
