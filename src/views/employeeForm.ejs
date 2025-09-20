@@ -5,6 +5,8 @@
     <title>Add employee</title>
 </head>
 <body>
+    <%- include("header") %>
+
         <h1>Add an employee</h1>
         <form action="/employees/create" method="post">
             <div class="form-field">
@@ -48,8 +50,8 @@
                 <input type="number" name="days_worked" id="days_worked">
             </div>
             <div class="form-field">
-                <label for="high_school">Days worked</label>
-                <input type="number" name="high_school" id="high_school">
+                <label for="high_school">High school title</label>
+                <input type="checkbox" name="high_school" id="high_school">
             </div>
 
             <button type="submit">Add employee</button>

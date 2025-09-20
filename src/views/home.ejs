@@ -5,17 +5,7 @@
     <title>Home</title>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/auth/signup">Crear cuenta</a></li>
-                <li><a href="/auth/login">Inicia sesion</a></li>
-                <li><a href="/auth/logout">Cerrar sesion</a></li>
-                <li><a href="/employees/create">Agrega empleado</a></li>
-                <li><a href="/payroll">Liquidacion</a></li>
-            </ul>
-        </nav>
-    </header>
-    <h1>Welcome</h1>
+    <%- include("header") %>
+    <h1>Welcome <%= currentUser %></h1>
 </body>
 </html>
