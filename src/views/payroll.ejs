@@ -5,6 +5,8 @@
     <title>Payroll</title>
 </head>
 <body>
+    <%- include("header") %>
+
     <% if(allEmployees) { %>
         <form action="/payroll" method="post">
             <label for="employee">Select an employee</label>
@@ -19,13 +21,21 @@
     <% } %>
 
     <% if(employee) { %>
+        <h1>Remuneration items</h1>
         <p>Basic salary: $ <%= employee.basicSalary %></p>
         <p>Antique: $ <%= employee.antiqueValue %></p>
         <% if(employee.highSchoolValue !== 0) { %>
             <p>High School Title Extra: $ <%= employee.highSchoolValue %></p> 
         <% } %>
-        <p>: $</p>
-        <p>: $</p>
+        <p>Total: $ <%= employee.totalSalary %></p>
+
+        <br>
+
+        <h1>Contributions</h1>
+        <p>SIPA Ley 24.241: $ <%= employee.contributions.retirementContribution[0] %></p>
+        <p>INSSJyP Ley 19.032: $ <%= employee.contributions.retirementContribution[1] %></p>
+        <p>Obra Social Ley 23.660: $ <%= employee.contributions.socialWork %></p>
+        <p>Cuota Sindical 2%: $ <%= employee.contributions.unionDues %></p>
     <% } %>
 </body>
 </html>
