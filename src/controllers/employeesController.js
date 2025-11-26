@@ -3,6 +3,7 @@ const {
   getAllEmployees,
   getEmployee,
   editEmployee,
+  deleteEmployee,
 } = require("../models/employeesModel");
 
 // Get all employees
@@ -35,10 +36,18 @@ async function editEmployeePost(req, res) {
   res.json(req.body, updatedEmployee);
 }
 
+// Delete employee
+async function deleteEmployeePost(req, res) {
+  const employeeId = parseInt(req.params.id);
+  await deleteEmployee(employeeId);
+  res.redirect("/employees");
+}
+
 module.exports = {
   allEmployeesGet,
   createEmployeeGet,
   createEmployeePost,
   editEmployeeGet,
   editEmployeePost,
+  deleteEmployeePost,
 };
