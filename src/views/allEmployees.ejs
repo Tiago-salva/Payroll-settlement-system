@@ -7,12 +7,17 @@
 </head>
 <body>
     <%- include("header") %>
+
+    <a href="/employees/create">Add an employee</a>
+
     <ul>
     <% allEmployees.forEach(employee => { %>
         <li class="employee">
             <h3><%= employee.full_name %></h3>
             <a href="/employees/<%= employee.id %>/edit">Edit</a>
-            <a href="/employees/<%= employee.id %>/delete">Delete</a>
+            <form action="/employees/<%= employee.id %>/delete" method="post">
+                <button type="submit">Delete</button>
+            </form>
         </li>
     <% }) %>
     </ul>
