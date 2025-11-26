@@ -41,7 +41,17 @@ async function calculateContributions(totalSalary) {
   const socialWork = Math.round(totalSalary * 0.03 * 100) / 100;
   const unionDues = Math.round(totalSalary * 0.02 * 100) / 100;
 
-  return { retirementContribution, socialWork, unionDues };
+  const finalSalary =
+    Math.round(
+      (totalSalary -
+        (retirementContribution[0] +
+          retirementContribution[1] +
+          socialWork +
+          unionDues)) *
+        100
+    ) / 100;
+
+  return { retirementContribution, socialWork, unionDues, finalSalary };
 }
 
 async function payrollPost(req, res) {
