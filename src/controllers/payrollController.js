@@ -6,52 +6,60 @@ async function payrollGet(req, res) {
 }
 
 async function calculatePayroll(employee) {
-  // Antique value
-  const percent = employee.antique * 0.05;
-  const antiqueValue = Math.round(employee.basicSalary * percent * 100) / 100;
+  // Valor por antiguedad
+  const porcentajeAntiguedad = employee.antiguedad * 0.05;
+  const valorPorAntiguedad =
+    Math.round(employee.salario_basico * porcentajeAntiguedad * 100) / 100;
 
-  // High school value
-  let highSchoolValue = 0;
-  if (employee.highSchool) {
-    highSchoolValue =
-      Math.round((employee.basicSalary + antiqueValue) * 0.05 * 100) / 100;
+  // Valor por secundario completo
+  let valorPorSecundario = 0;
+  if (employee.secundario) {
+    valorPorSecundario =
+      Math.round((employee.salario_basico + valorPorAntiguedad) * 0.05 * 100) /
+      100;
   }
 
-  // Total salary
-  const totalSalary =
-    Math.round((employee.basicSalary + antiqueValue + highSchoolValue) * 100) /
-    100;
-  const contributions = await calculateContributions(totalSalary);
-  console.log(contributions);
+  // Salario total
+  const salarioTotal =
+    Math.round(
+      (employee.salario_basico + valorPorAntiguedad + valorPorSecundario) * 100
+    ) / 100;
+  const contribuciones = await calcularContribuciones(salarioTotal);
+  console.log(contribuciones);
 
   return {
     ...employee,
-    antiqueValue,
-    highSchoolValue,
-    totalSalary,
-    contributions,
+    valorPorAntiguedad,
+    valorPorSecundario,
+    salarioTotal,
+    contribuciones,
   };
 }
 
-async function calculateContributions(totalSalary) {
-  const retirementContribution = [
-    Math.round(totalSalary * 0.11 * 100) / 100,
-    Math.round(totalSalary * 0.03 * 100) / 100,
+async function calcularContribuciones(salarioTotal) {
+  // Jubilacion
+  const aporteJubilacion = [
+    Math.round(salarioTotal * 0.11 * 100) / 100,
+    Math.round(salarioTotal * 0.03 * 100) / 100,
   ];
-  const socialWork = Math.round(totalSalary * 0.03 * 100) / 100;
-  const unionDues = Math.round(totalSalary * 0.02 * 100) / 100;
 
-  const finalSalary =
+  // Obra social
+  const obraSocial = Math.round(salarioTotal * 0.03 * 100) / 100;
+
+  // Aporte sindical
+  const aporteSindical = Math.round(salarioTotal * 0.02 * 100) / 100;
+
+  const salarioFinal =
     Math.round(
-      (totalSalary -
-        (retirementContribution[0] +
-          retirementContribution[1] +
-          socialWork +
-          unionDues)) *
+      (salarioTotal -
+        (aporteJubilacion[0] +
+          aporteJubilacion[1] +
+          obraSocial +
+          aporteSindical)) *
         100
     ) / 100;
 
-  return { retirementContribution, socialWork, unionDues, finalSalary };
+  return { aporteJubilacion, obraSocial, aporteSindical, salarioFinal };
 }
 
 async function payrollPost(req, res) {

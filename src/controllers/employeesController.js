@@ -12,6 +12,13 @@ async function allEmployeesGet(req, res) {
   res.render("allEmployees", { allEmployees: allEmployees });
 }
 
+// Get employee
+async function employeeGet(req, res) {
+  const employeeId = parseInt(req.params.id);
+  const employee = await getEmployee(employeeId);
+  res.render("employee", { employee: employee });
+}
+
 // Create employee
 async function createEmployeeGet(req, res) {
   res.render("employeeForm");
@@ -45,6 +52,7 @@ async function deleteEmployeePost(req, res) {
 
 module.exports = {
   allEmployeesGet,
+  employeeGet,
   createEmployeeGet,
   createEmployeePost,
   editEmployeeGet,

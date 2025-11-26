@@ -7,6 +7,7 @@ const {
   editEmployeeGet,
   editEmployeePost,
   deleteEmployeePost,
+  employeeGet,
 } = require("../controllers/employeesController");
 const employeesRouter = new Router();
 
@@ -16,6 +17,9 @@ employeesRouter.get("/", allEmployeesGet);
 // Create employee
 employeesRouter.get("/create", createEmployeeGet);
 employeesRouter.post("/create", createEmployeePost);
+
+// Get employee
+employeesRouter.get("/:id", employeeGet);
 
 // Edit employee
 employeesRouter.get("/:id/edit", editEmployeeGet);

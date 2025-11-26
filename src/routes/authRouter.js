@@ -1,3 +1,4 @@
+const passport = require("passport");
 const { Router } = require("express");
 const {
   createUserGet,
@@ -16,7 +17,15 @@ authRouter.post("/signup", createUserPost);
 authRouter.get("/login", loginUserGet);
 authRouter.post("/login", loginUserPost);
 
+authRouter.get(
+  "/p",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    res.json(req.user);
+  }
+);
+
 // Logout
-authRouter.post("/logout", logoutUser);
+// authRouter.get("/logout", logoutUser);
 
 module.exports = authRouter;

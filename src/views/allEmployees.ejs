@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employees</title>
+    <title>Empleados</title>
 </head>
 <body>
     <%- include("header") %>
 
-    <a href="/employees/create">Add an employee</a>
+    <a href="/employees/create">Agrega un empleado</a>
 
     <ul>
     <% allEmployees.forEach(employee => { %>
         <li class="employee">
-            <h3><%= employee.full_name %></h3>
-            <a href="/employees/<%= employee.id %>/edit">Edit</a>
+            <a href="/employees/<%= employee.id %>"><%= employee.nombre_completo %></a>
+            <a href="/employees/<%= employee.id %>/edit">Editar</a>
             <form action="/employees/<%= employee.id %>/delete" method="post">
-                <button type="submit">Delete</button>
+                <button type="submit">Eliminar</button>
             </form>
         </li>
     <% }) %>

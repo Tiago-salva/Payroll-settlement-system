@@ -2,59 +2,59 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Add employee</title>
+    <title>Agregar empleado</title>
 </head>
 <body>
     <%- include("header") %>
 
-        <h1>Add an employee</h1>
+        <h1>Agrega un empleado</h1>
         <form action="/employees/create" method="post">
             <div class="form-field">
                 <label for="cuit">Cuit</label>
                 <input type="number" name="cuit" id="cuit">
             </div>
             <div class="form-field">
-                <label for="full_name">Full name</label>
-                <input type="text" name="full_name" id="full_name">
+                <label for="nombre_completo">Nombre completo</label>
+                <input type="text" name="nombre_completo" id="nombre_completo">
             </div>
             <div class="form-field">
-                <label for="position">Position</label>
-                <input type="text" name="position" id="position">
+                <label for="puesto">Puesto</label>
+                <input type="text" name="puesto" id="puesto">
             </div>
             <div class="form-field">
-                <label for="entry_date">Entry date</label>
-                <input type="date" name="entry_date" id="entry_date">
+                <label for="fecha_de_ingreso">Fecha de ingreso</label>
+                <input type="date" name="fecha_de_ingreso" id="fecha_de_ingreso">
             </div>
             <div class="form-field">
-                <label for="social_work">Social work</label>
-                <input type="text" name="social_work" id="social_work">
+                <label for="obra_social">Obra social</label>
+                <input type="text" name="obra_social" id="obra_social">
             </div>
             <div class="form-field">
-                <label for="antique">Antique</label>
-                <input type="number" name="antique" id="antique">
+                <label for="antiguedad">Antiguedad</label>
+                <input type="number" name="antiguedad" id="antiguedad">
             </div>
             <div class="form-field">
-                <label for="mode">Mode</label>
-                <input type="text" name="mode" id="mode">
+                <label for="modalidad">Modalidad</label>
+                <input type="text" name="modalidad" id="modalidad">
             </div>
             <div class="form-field">
-                <label for="time_worked">Time worked</label>
-                <input type="number" name="time_worked" id="time_worked">
+                <label for="tiempo_trabajado">Tiempo trabajado</label>
+                <input type="number" name="tiempo_trabajado" id="tiempo_trabajado">
             </div>
             <div class="form-field">
-                <label for="basic_salary">Basic salary</label>
-                <input type="number" name="basic_salary" id="basic_salary">
+                <label for="salario_basico">salario basico</label>
+                <input type="number" name="salario_basico" id="salario_basico">
             </div>
             <div class="form-field">
-                <label for="days_worked">Days worked</label>
-                <input type="number" name="days_worked" id="days_worked">
+                <label for="dias_trabajados">Dias trabajados</label>
+                <input type="number" name="dias_trabajados" id="dias_trabajados">
             </div>
             <div class="form-field">
-                <label for="high_school">High school title</label>
-                <input type="checkbox" name="high_school" id="high_school">
+                <label for="secundario">Titulo secundario</label>
+                <input type="checkbox" name="secundario" id="secundario">
             </div>
 
-            <button type="submit">Add employee</button>
+            <button type="submit">Agregar empleado</button>
         </form>
 </body>
 </html>
