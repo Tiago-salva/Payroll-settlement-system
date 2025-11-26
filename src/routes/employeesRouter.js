@@ -6,6 +6,7 @@ const {
   createEmployeePost,
   editEmployeeGet,
   editEmployeePost,
+  deleteEmployeePost,
 } = require("../controllers/employeesController");
 const employeesRouter = new Router();
 
@@ -21,7 +22,6 @@ employeesRouter.get("/:id/edit", editEmployeeGet);
 employeesRouter.post("/:id/edit", editEmployeePost);
 
 // Delete employee
-// employeesRouter.get("/:id/delete");
-// employeesRouter.post("/:id/delete");
+employeesRouter.post("/:id/delete", deleteEmployeePost);
 
 module.exports = employeesRouter;
