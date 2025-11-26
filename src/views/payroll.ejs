@@ -36,6 +36,10 @@
         <p>INSSJyP Ley 19.032: $ <%= employee.contributions.retirementContribution[1] %></p>
         <p>Obra Social Ley 23.660: $ <%= employee.contributions.socialWork %></p>
         <p>Cuota Sindical 2%: $ <%= employee.contributions.unionDues %></p>
+
+        <br>
+
+        <h1>Final salary: $ <%= employee.contributions.finalSalary %></h1>
     <% } %>
 </body>
 </html>
