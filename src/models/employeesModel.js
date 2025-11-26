@@ -53,4 +53,16 @@ async function editEmployee(id, data) {
   return updatedEmployee;
 }
 
-module.exports = { addEmployee, getAllEmployees, getEmployee, editEmployee };
+async function deleteEmployee(id) {
+  await prisma.employee.delete({
+    where: { id: id },
+  });
+}
+
+module.exports = {
+  addEmployee,
+  getAllEmployees,
+  getEmployee,
+  editEmployee,
+  deleteEmployee,
+};
