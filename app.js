@@ -6,11 +6,11 @@ const passport = require("passport");
 
 // Import custom config
 const initializePassport = require("./config/passport-config");
+
+// Import routers
 const authRouter = require("./src/routes/authRouter");
 const employeesRouter = require("./src/routes/employeesRouter");
 const payrollRouter = require("./src/routes/payrollRouter");
-
-// Import routers
 
 // App
 const app = express();
