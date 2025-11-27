@@ -6,6 +6,26 @@ const {
   deleteEmployee,
 } = require("../models/employeesModel");
 
+const fields = {
+  cuit: "Cuit",
+  nombre_completo: "Nombre completo",
+  puesto: "Puesto",
+  fecha_de_ingreso: {
+    label: "Fecha de ingreso",
+    format: (value) => new Date(value).toLocaleDateString("es-AR"),
+  },
+  obra_social: "Obra social",
+  antiguedad: "Antiguedad",
+  modalidad: "Modalidad",
+  tiempo_trabajado: "Tiempo trabajado",
+  salario_basico: "Salario basico",
+  dias_trabajados: "Dias trabajado",
+  secundario: {
+    label: "Titulo secundario",
+    format: (value) => (value ? "Si" : "No"),
+  },
+};
+
 // Get all employees
 async function allEmployeesGet(req, res) {
   const allEmployees = await getAllEmployees();
@@ -16,7 +36,7 @@ async function allEmployeesGet(req, res) {
 async function employeeGet(req, res) {
   const employeeId = parseInt(req.params.id);
   const employee = await getEmployee(employeeId);
-  res.render("employee", { employee: employee });
+  res.render("employee", { employee: employee, fields: fields });
 }
 
 // Create employee
