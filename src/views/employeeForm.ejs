@@ -11,23 +11,28 @@
         <form action="/employees/create" method="post">
             <div class="form-field">
                 <label for="cuit">Cuit</label>
-                <input type="number" name="cuit" id="cuit">
+                <input type="text" name="cuit" id="cuit" pattern="^\d{2}-\d{8}-\d$" required>
             </div>
             <div class="form-field">
                 <label for="nombre_completo">Nombre completo</label>
-                <input type="text" name="nombre_completo" id="nombre_completo">
+                <input type="text" name="nombre_completo" id="nombre_completo" required>
             </div>
             <div class="form-field">
                 <label for="puesto">Puesto</label>
-                <input type="text" name="puesto" id="puesto">
+                <select name="puesto" id="puesto">
+                    <% puestos.forEach((puesto)=> { %>
+                        <option value=<%=puesto %>><%= puesto %>
+                        </option>
+                        <% }) %>
+                </select required>
             </div>
             <div class="form-field">
                 <label for="fecha_de_ingreso">Fecha de ingreso</label>
-                <input type="date" name="fecha_de_ingreso" id="fecha_de_ingreso">
+                <input type="date" name="fecha_de_ingreso" id="fecha_de_ingreso" required>
             </div>
             <div class="form-field">
                 <label for="obra_social">Obra social</label>
-                <input type="text" name="obra_social" id="obra_social">
+                <input type="text" name="obra_social" id="obra_social" required>
             </div>
             <div class="form-field">
                 <label for="antiguedad">Antiguedad</label>
@@ -35,19 +40,19 @@
             </div>
             <div class="form-field">
                 <label for="modalidad">Modalidad</label>
-                <input type="text" name="modalidad" id="modalidad">
+                <input type="text" name="modalidad" id="modalidad" required>
             </div>
             <div class="form-field">
                 <label for="dias_trabajados">Dias trabajados</label>
-                <input type="number" name="dias_trabajados" id="dias_trabajados">
+                <input type="number" name="dias_trabajados" id="dias_trabajados" required>
             </div>
             <div class="form-field">
                 <label for="salario_basico">Salario basico</label>
-                <input type="number" name="salario_basico" id="salario_basico">
+                <input type="number" name="salario_basico" id="salario_basico" required>
             </div>
             <div class="form-field">
                 <label for="secundario">Titulo secundario</label>
-                <input type="checkbox" name="secundario" id="secundario">
+                <input type="checkbox" name="secundario" id="secundario" required>
             </div>
 
             <button type="submit">Agregar empleado</button>
