@@ -29,6 +29,18 @@ const fields = {
   },
 };
 
+const puestos = [
+  "Inicial A",
+  "Inicial B",
+  "Cajero",
+  "Perfumero",
+  "Administrativo",
+  "Empleado de farmacia",
+  "Empleado especializado de farmacia",
+  "Farmaceutico DT",
+  "Farmaceutico auxiliar",
+];
+
 // Get all employees
 async function allEmployeesGet(req, res) {
   const allEmployees = await getAllEmployees();
@@ -44,7 +56,7 @@ async function employeeGet(req, res) {
 
 // Create employee
 async function createEmployeeGet(req, res) {
-  res.render("employeeForm");
+  res.render("employeeForm", { puestos: puestos });
 }
 
 async function createEmployeePost(req, res) {
@@ -58,7 +70,7 @@ async function editEmployeeGet(req, res) {
   const employeeId = parseInt(req.params.id);
   const employee = await getEmployee(employeeId);
   console.log(employee);
-  res.render("employeeEditForm", { employee: employee });
+  res.render("employeeEditForm", { employee: employee, puestos: puestos });
 }
 
 async function editEmployeePost(req, res) {
