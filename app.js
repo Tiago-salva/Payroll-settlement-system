@@ -21,9 +21,8 @@ app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: true }));
 
-// Configuracion por si en el futuro agrego front-end
-// app.use(express.json());
-// app.use(express.static(__dirname));
+app.use(express.json());
+app.use(express.static(__dirname));
 
 // Passport
 initializePassport(passport);
