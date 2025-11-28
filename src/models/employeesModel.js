@@ -2,6 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 async function addEmployee(data) {
+  console.log(data);
   const newEmployee = await prisma.employee.create({
     data: {
       cuit: data.cuit,
@@ -11,10 +12,11 @@ async function addEmployee(data) {
       obra_social: data.obra_social,
       antiguedad: parseInt(data.antiguedad),
       modalidad: data.modalidad,
-      tiempo_trabajado: parseInt(data.tiempo_trabajado),
-      salario_basico: parseInt(data.salario_basico),
       dias_trabajados: parseInt(data.dias_trabajados),
-      secundario: data.secundario,
+      salario_basico: parseInt(data.salario_basico),
+      // El tiempo trabajado se calcula segun los dias trabajados
+      tiempo_trabajado: (parseInt(data.dias_trabajados) * 100) / 30,
+      secundario: data.secundario === "on" ? true : false,
       userId: 1,
     },
   });
@@ -37,16 +39,16 @@ async function editEmployee(id, data) {
     where: { id: id },
     data: {
       cuit: data.cuit,
-      full_name: data.nombre_completo,
-      position: data.puesto,
-      // entryDate: new Date(data.fecha_de_ingreso), // El valor tiene que ser el que ya tenia el empleado
-      socialWork: data.obra_social,
-      antique: parseInt(data.antiguedad),
-      mode: data.modalidad,
-      timeWorked: parseInt(data.tiempo_trabajado),
-      basicSalary: parseInt(data.salario_basico),
-      daysWorked: parseInt(data.dias_trabajados),
-      highSchool: data.secundario,
+      nombre_completo: data.nombre_completo,
+      puesto: data.puesto,
+      // fecha_de_ingreso: new Date(data.fecha_de_ingreso), // El valor tiene que ser el que ya tenia el empleado
+      obra_social: data.obra_social,
+      antiguedad: parseInt(data.antiguedad),
+      modalidad: data.modalidad,
+      dias_trabajados: parseInt(data.dias_trabajados),
+      salario_basico: parseInt(data.salario_basico),
+      tiempo_trabajado: (parseInt(data.dias_trabajados) * 100) / 30,
+      secundario: data.secundario,
     },
   });
 
