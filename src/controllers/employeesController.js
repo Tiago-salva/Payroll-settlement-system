@@ -15,11 +15,14 @@ const fields = {
     format: (value) => new Date(value).toLocaleDateString("es-AR"),
   },
   obra_social: "Obra social",
-  antiguedad: "Antiguedad",
+  antiguedad: { label: "Antiguedad", format: (value) => `${value} años` },
   modalidad: "Modalidad",
-  tiempo_trabajado: "Tiempo trabajado",
-  salario_basico: "Salario basico",
   dias_trabajados: "Dias trabajado",
+  salario_basico: "Salario basico",
+  tiempo_trabajado: {
+    label: "Tiempo trabajado",
+    format: (value) => `${value}%`,
+  },
   secundario: {
     label: "Titulo secundario",
     format: (value) => (value ? "Si" : "No"),
