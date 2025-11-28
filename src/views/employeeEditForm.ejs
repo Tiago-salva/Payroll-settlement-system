@@ -21,7 +21,11 @@
             </div>
             <div class="form-field">
                 <label for="puesto">Puesto</label>
-                <input type="text" name="puesto" id="puesto" value="<%= employee.puesto %>">
+                <select name="puesto" id="puesto">
+                    <% puestos.forEach((puesto) => { %>
+                        <option value=<%= puesto %>><%= puesto %></option>
+                    <% }) %>
+                </select>
             </div>
             <div class="form-field">
                 <label for="fecha_de_ingreso">Fecha de ingreso</label>
