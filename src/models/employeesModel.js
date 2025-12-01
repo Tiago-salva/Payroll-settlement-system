@@ -2,11 +2,10 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 async function addEmployee(data) {
-  console.log(data);
   const newEmployee = await prisma.employee.create({
     data: {
       cuit: data.cuit,
-      nombre_completo: data.nombre_completo,
+      nombre_completo: toUpperCase(data.nombre_completo),
       puesto: data.puesto,
       fecha_de_ingreso: new Date(data.fecha_de_ingreso),
       obra_social: data.obra_social,

@@ -15,7 +15,7 @@ const fields = {
     format: (value) => new Date(value).toLocaleDateString("es-AR"),
   },
   obra_social: "Obra social",
-  antiguedad: { label: "Antiguedad", format: (value) => `${value} años` },
+  antiguedad: "Antiguedad",
   modalidad: "Modalidad",
   dias_trabajados: "Dias trabajado",
   salario_basico: "Salario basico",
